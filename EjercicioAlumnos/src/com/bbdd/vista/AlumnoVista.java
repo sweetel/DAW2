@@ -103,7 +103,7 @@ public class AlumnoVista {
 public void borrarAlumno() throws ClassNotFoundException, SQLException {
 		
 		System.out.println("Numero de DNI que desea ELIMINAR:");
-		String DNI;
+		String DNI = null;
 		Boolean esEmpleadoIDCorrecto = false;
 		
 		while (!esEmpleadoIDCorrecto) {

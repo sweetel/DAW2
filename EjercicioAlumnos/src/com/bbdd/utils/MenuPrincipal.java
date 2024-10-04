@@ -13,7 +13,7 @@ public class MenuPrincipal {
 		
 		
 		while (opcion != 6) {
-			System.out.println("       MENUuuu PRINCIPAL 2          ");
+			System.out.println("       MENU PRINCIPAL 2          ");
 			System.out.println("===============================================");
 			System.out.println("1. Insertar Alumno");
 			System.out.println("2. Busqueda por filtros");
@@ -25,7 +25,7 @@ public class MenuPrincipal {
 			opcion = sc.nextInt();
 			sc.nextLine();
 			
-			System.out.println("la opcion es <" + opcion + ">");
+			System.out.println("la opcion es " + opcion + "");
 			if (opcion >= 1 && opcion <= 5) {
 				switch (opcion) {
 				case 1:
@@ -33,13 +33,13 @@ public class MenuPrincipal {
 					av.insertarInscripcion();
 					break;
 				case 2:
-					System.out.println("Consultadddds Alumno");
+					System.out.println("Consultas Alumno");
 					av.buscarAlumnoConFiltro();
-					System.out.println("Consultadddds Alumno222");
+					System.out.println("Consultas Alumno");
 
 					break;
 				case 3:
-					System.out.println("Actualizdddddar Alumno");
+					System.out.println("Actualizar Alumno");
 					av.actualizarAlumno();
 					break;
 				case 4:
