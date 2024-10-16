@@ -47,17 +47,15 @@ import com.cbs.proyecto1.dto.PersonaDTO;
 
 	            if(person.getDNI().equals(personDTO.getDNI())) {
 
-	                person.setNombre(personDTO.getNombre());
-	                person.setApellido(personDTO.getApellido());
-	                person.setEdad(personDTO.getEdad());
-	                person.setSexo(personDTO.getSexo());
-
+					person.setNombre(personDTO.getNombre());
+					person.setApellido(personDTO.getApellido());
+					person.setEdad(personDTO.getEdad());
+					person.setSexo(personDTO.getSexo());
 	            }
 
 	        }
 
 	        return personList;
-	       
 	    }
 
 	    @GetMapping("/persons/remove")

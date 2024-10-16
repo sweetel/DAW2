@@ -14,7 +14,7 @@ package com.cbs.proyecto1.dto;
 			this.nombre = nombre;
 			this.apellido = apellido;
 			this.edad = edad;
-			DNI = DNI;
+			this.DNI = DNI;
 			this.sexo = sexo;
 		}
 
