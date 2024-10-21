@@ -15,77 +15,108 @@ import com.cbs.proyecto1.dto.PersonaDTO;
 @RestController
 public class PersonController {
 
-	private List<PersonaDTO> personList;
+    private List<PersonaDTO> personList;
 
-	public PersonController() {
-		this.personList = new ArrayList<>();
-		this.personList.add(new PersonaDTO("654981054F", "Eduardo", "Gómez", "18", "gay"));
-	}
+    public PersonController() {
+        this.personList = new ArrayList<>();
+        this.personList.add(new PersonaDTO("654981054F", "Eduardo", "Gómez", "18", "gay"));
+    }
 
-	@GetMapping("/persons/list")
-	public List<PersonaDTO> personList() {
+    @GetMapping("/persons/list")
+    public ResponseEntity<?> personList() {
+        try {
+            return ResponseEntity.ok(personList);
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError().body("Error al obtener todos los elementos");
+        }
+    }
+    
+    @GetMapping("/persons/bydni")
+    public ResponseEntity<?> bydni(@RequestBody PersonaDTO personFind) {
+        try {
+            if (personFind == null || personFind.getDNI() == null) {
+                return ResponseEntity.badRequest().body("Datos de entrada no válidos");
+            }
 
-		return personList;
+            PersonaDTO person = null;
 
-	}
+            for (PersonaDTO item : personList) {
+                if (item.getDNI().equals(personFind.getDNI())) {
+                    person = item;
+                    break; 
+                }
+            }
 
-	@PostMapping("/persons/add")
-	public List<PersonaDTO> personsAdd(@RequestBody PersonaDTO personDTO) {
+            if (person == null) {
+                return ResponseEntity.status(404).body("Usuario no encontrado");
+            } else {
+                return ResponseEntity.ok(person); 
+            }
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError().body("Error al procesar la solicitud");
+        }
+    }
 
-		// this.personList.add(new PersonDTO("1344456T", "Paco", "Carmona", 23,
-		// "lesbiano"));
-		// this.personList.add(new PersonDTO("654981054F", "Eduardo", "Gómez", 18,
-		// "gay"));
-		// this.personList.add(new PersonDTO("9087536X", "Joan", "Sánchez", 4,
-		// "desconocido"));
 
-		this.personList.add(personDTO);
+    @PostMapping("/persons/add")
+    public ResponseEntity<?> personsAdd(@RequestBody PersonaDTO personDTO) {
+        try {
+            if (personDTO == null) {
+                return ResponseEntity.badRequest().body(null);
+            }
+            personList.add(personDTO);
+            return ResponseEntity.ok(personList);
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError().body("Error al añadir la persona");
+        }
+    }
 
-		return personList;
+    @PostMapping("/persons/update")
+    public ResponseEntity<?> personsUpdate(@RequestBody PersonaDTO personDTO) {
+        try {
+            if (personDTO == null || personDTO.getDNI() == null) {
+                return ResponseEntity.badRequest().body("La persona introducida es null");
+            }
 
-	}
+            for (PersonaDTO person : personList) {
+                if (person.getDNI().equals(personDTO.getDNI())) {
+                    person.setNombre(personDTO.getNombre());
+                    person.setApellido(personDTO.getApellido());
+                    person.setEdad(personDTO.getEdad());
+                    person.setSexo(personDTO.getSexo());
+                    return ResponseEntity.ok(personList);
+                }
+            }
+            return ResponseEntity.badRequest().body(null);
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError().body("Error al actualizar");
+        }
+    }
 
-	@PostMapping("/persons/update")
-	public List<PersonaDTO> personsUpdate(@RequestBody PersonaDTO personDTO) {
+    @DeleteMapping("/persons/delete")
+    public ResponseEntity<?> delete(@RequestBody PersonaDTO personDelete) {
+        try {
+            if (personDelete == null || personDelete.getDNI() == null) {
+                return ResponseEntity.badRequest().body("Datos de entrada no válidos");
+            }
 
-		for (PersonaDTO person : personList) {
+            PersonaDTO personAux = null;
 
-			if (person.getDNI().equals(personDTO.getDNI())) {
+            for (PersonaDTO personDTO : personList) {
+                if (personDelete.getDNI().equals(personDTO.getDNI())) {
+                    personAux = personDTO;
+                    break;
+                }
+            }
 
-				person.setNombre(personDTO.getNombre());
-				person.setApellido(personDTO.getApellido());
-				person.setEdad(personDTO.getEdad());
-				person.setSexo(personDTO.getSexo());
-			}
-
-		}
-
-		return personList;
-	}
-
-	@DeleteMapping("/persons/delete")
-	public ResponseEntity<?> delete(@RequestBody PersonaDTO personDelete) {
-
-		PersonaDTO PersonAux = null;
-		try {
-		for (PersonaDTO personDTO : personList) {
-			if (personDelete.getDNI().equals(personDTO.getDNI())) {
-				PersonAux = personDTO;
-			}
-		}
-
-		if (null != PersonAux) {
-			personList.remove(PersonAux);
-			return ResponseEntity.ok(personList);
-		}
-
-		else {
-			return ResponseEntity.badRequest().body("usuario no encontrado");
-		}
-		} catch(Exception ex) {
-			return ResponseEntity.internalServerError().body("error al procesar el delete");
-		}
-
-	} 
-
+            if (personAux != null) {
+                personList.remove(personAux);
+                return ResponseEntity.ok(personList);
+            } else {
+                return ResponseEntity.badRequest().body("Usuario no encontrado");
+            }
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError().body("Error al borrar a la persona");
+        }
+    }
 }
