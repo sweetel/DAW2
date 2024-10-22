@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cbs.proyecto1.dto.PersonaDTO;
@@ -56,6 +57,33 @@ public class PersonController {
             return ResponseEntity.internalServerError().body("Error al procesar la solicitud");
         }
     }
+    
+    @GetMapping("/persons/bydni")
+    public ResponseEntity<?> bydni(@RequestParam String dni) {
+        try {
+            if (dni == null || dni.isEmpty()) {
+                return ResponseEntity.badRequest().body("El DNI no puede estar vacío");
+            }
+
+            PersonaDTO person = null;
+
+            for (PersonaDTO item : personList) {
+                if (item.getDNI().equals(dni)) {
+                    person = item;
+                    break; 
+                }
+            }
+
+            if (person == null) {
+                return ResponseEntity.status(404).body("Usuario no encontrado");
+            } else {
+                return ResponseEntity.ok(person);
+            }
+        } catch (Exception ex) {
+            return ResponseEntity.internalServerError().body("Error al procesar la solicitud");
+        }
+    }
+
 
 
     @PostMapping("/persons/add")
