@@ -1,14 +1,12 @@
-package com.cbs.proyecto1.Controllers;
+package com.proyect_name.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MainRestController {
-
+public class MainController {
 	@GetMapping("/hello")
-	public String hello() {
-		return "hello world";
+	public String HelloWorld() {
+		return "Hello World!";
 	}
-
 }

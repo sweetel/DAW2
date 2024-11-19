@@ -31,33 +31,7 @@ public class PersonController {
             return ResponseEntity.internalServerError().body("Error al obtener todos los elementos");
         }
     }
-    
-    @GetMapping("/persons/bydni")
-    public ResponseEntity<?> bydni(@RequestBody PersonaDTO personFind) {
-        try {
-            if (personFind == null || personFind.getDNI() == null) {
-                return ResponseEntity.badRequest().body("Datos de entrada no válidos");
-            }
 
-            PersonaDTO person = null;
-
-            for (PersonaDTO item : personList) {
-                if (item.getDNI().equals(personFind.getDNI())) {
-                    person = item;
-                    break; 
-                }
-            }
-
-            if (person == null) {
-                return ResponseEntity.status(404).body("Usuario no encontrado");
-            } else {
-                return ResponseEntity.ok(person); 
-            }
-        } catch (Exception ex) {
-            return ResponseEntity.internalServerError().body("Error al procesar la solicitud");
-        }
-    }
-    
     @GetMapping("/persons/bydni")
     public ResponseEntity<?> bydni(@RequestParam String dni) {
         try {
@@ -84,14 +58,11 @@ public class PersonController {
         }
     }
 
-
-
     @PostMapping("/persons/add")
-    public ResponseEntity<?> personsAdd(@RequestBody PersonaDTO personDTO) {
+    public ResponseEntity<?> personsAdd(
+            @RequestBody PersonaDTO personDTO) {
         try {
-            if (personDTO == null) {
-                return ResponseEntity.badRequest().body(null);
-            }
+            
             personList.add(personDTO);
             return ResponseEntity.ok(personList);
         } catch (Exception ex) {
@@ -100,38 +71,43 @@ public class PersonController {
     }
 
     @PostMapping("/persons/update")
-    public ResponseEntity<?> personsUpdate(@RequestBody PersonaDTO personDTO) {
+    public ResponseEntity<?> personsUpdate(
+            @RequestParam String dni, 
+            @RequestParam String nombre, 
+            @RequestParam String apellidos, 
+            @RequestParam String edad, 
+            @RequestParam String sexo) {
         try {
-            if (personDTO == null || personDTO.getDNI() == null) {
+            if (dni == null) {
                 return ResponseEntity.badRequest().body("La persona introducida es null");
             }
 
             for (PersonaDTO person : personList) {
-                if (person.getDNI().equals(personDTO.getDNI())) {
-                    person.setNombre(personDTO.getNombre());
-                    person.setApellido(personDTO.getApellido());
-                    person.setEdad(personDTO.getEdad());
-                    person.setSexo(personDTO.getSexo());
+                if (person.getDNI().equals(dni)) {
+                    person.setNombre(nombre);
+                    person.setApellido(apellidos);
+                    person.setEdad(edad);
+                    person.setSexo(sexo);
                     return ResponseEntity.ok(personList);
                 }
             }
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body("Usuario no encontrado");
         } catch (Exception ex) {
             return ResponseEntity.internalServerError().body("Error al actualizar");
         }
     }
 
     @DeleteMapping("/persons/delete")
-    public ResponseEntity<?> delete(@RequestBody PersonaDTO personDelete) {
+    public ResponseEntity<?> delete(@RequestParam String dni) {
         try {
-            if (personDelete == null || personDelete.getDNI() == null) {
-                return ResponseEntity.badRequest().body("Datos de entrada no válidos");
+            if (dni == null || dni.isEmpty()) {
+                return ResponseEntity.badRequest().body("El DNI no puede estar vacío");
             }
 
             PersonaDTO personAux = null;
 
             for (PersonaDTO personDTO : personList) {
-                if (personDelete.getDNI().equals(personDTO.getDNI())) {
+                if (dni.equals(personDTO.getDNI())) {
                     personAux = personDTO;
                     break;
                 }
@@ -148,3 +124,4 @@ public class PersonController {
         }
     }
 }
+

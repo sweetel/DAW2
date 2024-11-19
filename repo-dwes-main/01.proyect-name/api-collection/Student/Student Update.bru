@@ -1,0 +1,19 @@
+meta {
+  name: Student Update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/student/update/70000001X
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Antonio",
+    "lastName": "Lopez",
+    "email": "antonio.lopez@calasanzsalamanca.es"
+  }
+}
