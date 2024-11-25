@@ -1,0 +1,19 @@
+meta {
+  name: Add
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/conductores/crear
+  body: json
+  auth: none
+}
+
+body:json {
+    {
+      "dni": "70000008X",
+      "nombre": "Anio",
+      "apellido": "Lew"
+    }
+}

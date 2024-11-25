@@ -1,0 +1,21 @@
+meta {
+  name: Add
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/vehiculos/crear
+  body: json
+  auth: none
+}
+
+body:json {
+   {
+      "matricula": "1234ABC",
+      "modelo": "Corolla",
+      "marca": "Toyota",
+      "garajeId": 1,
+      "conductorId": 4
+    }
+}

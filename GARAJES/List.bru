@@ -1,0 +1,20 @@
+meta {
+  name: List
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/conductores
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+      "dni": "70000003Z",
+      "nombre": "Laura",
+      "apellido": "González"
+    }
+  
+}

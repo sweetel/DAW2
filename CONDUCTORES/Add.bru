@@ -1,0 +1,19 @@
+meta {
+  name: Add
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/garajes/direccion
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "direccion": "Calle Principal 45",
+      "nombre": "Garaje Central",
+      "capacidad": 100
+    }
+}

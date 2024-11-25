@@ -1,0 +1,22 @@
+meta {
+  name: Update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/vehiculos/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "matricula": "1234ABC",
+      "modelo": "Corolla",
+      "marca": "Toyota",
+      "color": "Blue",
+      "garajeId": 1,
+      "conductorId": 4
+    }
+}
