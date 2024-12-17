@@ -32,4 +32,25 @@ public class GarageDAO {
         
         return response;
     }
+    
+    public boolean create(Garage newGarage) {
+    	try {
+    		Connection cn = DBUtils.getConnection();
+    		
+    		String query = "INSERT INTO garageDb.garage (name, postal_code) VALUES (?, ?)";
+    		
+    		PreparedStatement ps = cn.prepareStatement(query);
+    		
+    		ps.setString(0, newGarage.getName());
+    		ps.setString(1, newGarage.getPostalCode());
+    		
+    		boolean result = ps.execute();
+    		
+    		return result;
+    		
+    	} catch (Exception ex){
+    		System.out.println(ex);
+    		return false;
+    	}
+    }
 }

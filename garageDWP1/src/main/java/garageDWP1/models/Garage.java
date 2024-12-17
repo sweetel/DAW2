@@ -3,18 +3,18 @@ package garageDWP1.models;
 public class Garage {
 	private Integer id;
 	private String name;
-	private String postal_code;
+	private String postalCode;
 	
 	public Garage() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Garage(Integer id, String name, String postal_code) {
+	public Garage(Integer id, String name, String postalCode) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.postal_code = postal_code;
+		this.postalCode = postalCode;
 	}
 
 	public Integer getId() {
@@ -33,12 +33,17 @@ public class Garage {
 		this.name = name;
 	}
 
-	public String getPostal_code() {
-		return postal_code;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Garage [id=" + this.id + ", name=" + this.name + ", postal_code=" + this.postalCode + "]";
 	}
 
 	
