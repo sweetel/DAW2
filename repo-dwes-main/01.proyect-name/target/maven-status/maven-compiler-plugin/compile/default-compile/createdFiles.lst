@@ -1,0 +1,17 @@
+com\proyect_name\controllers\StudentController.class
+com\proyect_name\services\StudentServices.class
+com\proyect_name\models\Course.class
+com\proyect_name\services\CourseService.class
+com\proyect_name\repositories\ICourseRepository.class
+com\proyect_name\models\Student.class
+com\proyect_name\services\IStudentServices.class
+com\proyect_name\repositories\IStudentRepository.class
+com\proyect_name\controllers\StudentCourseController.class
+com\proyect_name\dto\StudentDTO.class
+com\proyect_name\Application.class
+com\proyect_name\services\ICourseService.class
+com\proyect_name\dto\CourseDTO.class
+com\proyect_name\controllers\MainController.class
+com\proyect_name\controllers\CourseController.class
+com\proyect_name\controllers\StudentCreateDTO.class
+ICourseRepository.class

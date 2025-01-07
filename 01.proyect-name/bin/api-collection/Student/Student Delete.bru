@@ -1,0 +1,15 @@
+meta {
+  name: Student Delete
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:8080/student/delete?dni=70000001X
+  body: none
+  auth: none
+}
+
+params:query {
+  dni: 70000001X
+}

@@ -1,0 +1,17 @@
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\Application.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\controllers\CourseController.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\controllers\MainController.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\controllers\StudentController.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\controllers\StudentCourseController.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\controllers\StudentCreateDTO.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\dto\CourseDTO.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\dto\StudentDTO.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\models\Course.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\models\Student.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\repositories\ICourseRepository.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\repositories\IStudentRepository.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\services\CourseService.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\services\ICourseService.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\services\IStudentServices.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\com\proyect_name\services\StudentServices.java
+C:\Users\Pablo\OneDrive\Escritorio\DAWESS\DAWES\repo-dwes-main\01.proyect-name\src\main\java\ICourseRepository.java
