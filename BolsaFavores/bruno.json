@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "BolsaFavores",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
